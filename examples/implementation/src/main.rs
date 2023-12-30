@@ -27,6 +27,9 @@ impl User {
             active: true,
         }
     }
+    fn upddate_uri(&mut self, uri: String) {
+        self.uri = uri;
+    }
 }
 
 fn main() {
@@ -47,7 +50,12 @@ fn main() {
     );
 
     let email_2 = String::from("steve@cde.com");
-    let new_user_2 = User::from_email(email_2);
+    let mut new_user_2 = User::from_email(email_2);
+
     println!("Hello, {}!", new_user_2.username);
+    println!("{:?}", new_user_2);
+
+    let new_uri = String::from("https://steve.com");
+    new_user_2.upddate_uri(new_uri);
     println!("{:?}", new_user_2);
 }

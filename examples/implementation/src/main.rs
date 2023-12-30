@@ -14,13 +14,25 @@ impl User {
             active: true,
         }
     }
+    fn deactivate(&mut self) {
+        self.active = false;
+    }
 }
 
 fn main() {
-    let new_user = User::new(
+    let mut new_user = User::new(
         String::from("johndoe"),
         String::from("abc@cde.com"),
         String::from("https://johndoe.com"),
     );
     println!("Hello, {}!", new_user.username);
+    println!(
+        "Account {} status is: {}",
+        new_user.username, new_user.active
+    );
+    new_user.deactivate();
+    println!(
+        "Account {} status is: {}",
+        new_user.username, new_user.active
+    );
 }

@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct User {
     username: String,
     email: String,
@@ -17,6 +18,15 @@ impl User {
     fn deactivate(&mut self) {
         self.active = false;
     }
+    fn from_email(email: String) -> Self {
+        let username = email.split('@').next().unwrap();
+        Self {
+            username: String::from(username),
+            email,
+            uri: String::from(""),
+            active: true,
+        }
+    }
 }
 
 fn main() {
@@ -35,4 +45,9 @@ fn main() {
         "Account {} status is: {}",
         new_user.username, new_user.active
     );
+
+    let email_2 = String::from("steve@cde.com");
+    let new_user_2 = User::from_email(email_2);
+    println!("Hello, {}!", new_user_2.username);
+    println!("{:?}", new_user_2);
 }

@@ -21,4 +21,5 @@ fn main() {
     };
     println!("{:?}", person);
     println!("Full name: {}", get_full_name(&person));
+    println!("The person's first name is: {}", person.first_name);
 }
